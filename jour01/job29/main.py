@@ -10,7 +10,6 @@ while y <= height:
     tempLine += ' '
     w -= 1
 
-  # while x <= height:
   if y == 1:
     tempLine += '/\\'
   else:
@@ -23,9 +22,6 @@ while y <= height:
         tempLine += ' '
       z -= 1
     tempLine += '\\'
-    # x += 1
-    # print(tempLine)
-
 
   print(tempLine)
   x = 1
