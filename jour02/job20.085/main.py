@@ -1,6 +1,12 @@
-caseVide = 'O'
-caseJaune = 'J'
-caseRouge = 'R'
+class bcolors:
+  YELLOW = '\033[93m'
+  RED = '\033[91m'
+  ENDC = '\033[0m'
+  BOLD = '\033[1m'
+  
+caseVide = bcolors.BOLD + ' O '
+caseJaune = bcolors.BOLD + bcolors.YELLOW + ' J ' + bcolors.ENDC
+caseRouge = bcolors.BOLD + bcolors.RED + ' R ' + bcolors.ENDC
 
 class Board: 
   def __init__(self, width: int, height: int):
@@ -46,7 +52,7 @@ class Board:
       # self.plateau[5][columnIndex - 1] = caseJaune
       rowIndex = self.height - 1
       while rowIndex >= 0:
-        if self.plateau[rowIndex][columnIndex - 1] == 'O':
+        if self.plateau[rowIndex][columnIndex - 1] == caseVide:
           if activePlayer == 'Jaune':
             self.plateau[rowIndex][columnIndex - 1] = caseJaune
           elif activePlayer == 'Rouge':
@@ -93,7 +99,7 @@ def game():
   PuissanceQuatro.afficherPlateau()
 
   nbTour = 0
-  while PuissanceQuatro.isThereAWinner() != 'J' and PuissanceQuatro.isThereAWinner() != 'R':
+  while PuissanceQuatro.isThereAWinner() != caseJaune and PuissanceQuatro.isThereAWinner() != caseRouge:
     activePlayer = 'Jaune' if nbTour % 2 == 0 else 'Rouge'
     print('\nC\'est au joueur ' + activePlayer + ' de jouer !\n')
     column = int(input('Choisissez une colonne ou placer votre pion:(0..' + str(width) + ') '))
@@ -106,5 +112,5 @@ def game():
         print('Cette colonne est déjà remplie !')
 
   print('WINNER WINNER CHICKEN DINNER')
-  print('Le joueur ' + ('Jaune' if PuissanceQuatro.isThereAWinner() == 'J' else 'Rouge' ) + ' à gagné !')
+  print('Le joueur ' + ('Jaune' if PuissanceQuatro.isThereAWinner() == caseJaune else 'Rouge' ) + ' à gagné !')
 game()
