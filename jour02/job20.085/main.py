@@ -14,15 +14,6 @@ class Board:
     self.height = height #Hauteur
     self.plateau = []
 
-    # ligne = []
-    # while width > 0:
-    #   ligne.append(caseVide)
-    #   width -= 1
-
-    # while height > 0:
-    #   self.plateau.append(ligne)
-    #   height -= 1
-
     row = self.height
     while row > 0:
       column = self.width
@@ -35,9 +26,6 @@ class Board:
       
   
   def afficherPlateau(self):
-    # # print(self.plateau)
-    # for ligne in self.plateau:
-    #   print(ligne)
     for ligne in self.plateau:
       ligneTemp = ''
       for case in ligne:
@@ -47,9 +35,6 @@ class Board:
   
   def play(self, columnIndex: int, activePlayer: str):
     if columnIndex <= self.width and columnIndex > 0:
-      # print('debug')
-      # print(self.plateau[5][columnIndex - 1])
-      # self.plateau[5][columnIndex - 1] = caseJaune
       rowIndex = self.height - 1
       while rowIndex >= 0:
         if self.plateau[rowIndex][columnIndex - 1] == caseVide:
@@ -90,7 +75,7 @@ class Board:
     return False
 
 
-def game():
+def playTheGame():
   width = int(input('\nChoisissez une largeur: '))
   height = int(input('\nChoisissez une hauteur: '))
 
@@ -113,4 +98,6 @@ def game():
 
   print('WINNER WINNER CHICKEN DINNER')
   print('Le joueur ' + ('Jaune' if PuissanceQuatro.isThereAWinner() == caseJaune else 'Rouge' ) + ' à gagné !')
-game()
+
+
+playTheGame()
