@@ -16,6 +16,8 @@ for word in re.findall(r'\b[a-zA-Z]{1,}\b', data):
 
 orderedWordSizeOccurency = dict(sorted(wordSizeOccurency.items()))
 
+print(orderedWordSizeOccurency)
+
 wordSizeOccurencyList = [str(key) for key, val in orderedWordSizeOccurency.items() for _ in range(val)]
 
 import matplotlib.pyplot as plt
